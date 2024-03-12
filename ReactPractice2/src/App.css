@@ -112,3 +112,9 @@ footer {
   background-color: rgba(17, 14, 14, 0.5); /* Semi-transparent background */
   z-index: 999; /* Ensure the overlay is behind the modal */
 }
+
+.linkToRedirect *{
+  text-decoration: none;
+  color: rgb(251, 114, 114);
+  font: 1em sans-serif;
+}

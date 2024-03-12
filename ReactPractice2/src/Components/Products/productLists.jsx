@@ -1,8 +1,13 @@
 import { useState } from 'react'
 import useProductStore from '../Store'
+import { Link } from 'react-router-dom'
+
+
 
 function Product({ product: { title, description, price, id }, onAddToCart, image }) {
-  const { cart } = useProductStore();
+
+  
+const { cart, seeMore } = useProductStore();
 
 const [addedToCart, setAddedToCart] = useState("");
 
@@ -16,6 +21,10 @@ const [addedToCart, setAddedToCart] = useState("");
   return <div className="card">
     <img src={image} alt={title} className="productImage" />
     <div className="cardContent">
+      <div className='linkToRedirect'>
+   {seeMore ? <Link to={`/product/${id}`}>See More</Link> : <Link to={`/products/`}>Bact to products</Link>}
+       </div>
+  
     <h3>TITLE: {title}</h3>
     <p>Description: {description}</p>
     <p>Price: {price} kr</p>

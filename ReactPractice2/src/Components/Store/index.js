@@ -1,18 +1,34 @@
 import { create } from 'zustand'
-import  API_PRODUCTS  from '../shared/apis.js';
+
 
 
 const useProductStore = create((set, get) => ({
     products: [],
     cart: [],
-   cartTotal: 0,
-    fetchProducts: async () => {
+    cartTotal: 0,
+    isLoading: false,
+    isError: false,
+    seeMore: true,
+    backToProducts: () => set((state)=>({...state, seeMore: false})),
+
+    fetchProducts: async (url) => {
+        try {
+           set((state)=>({...state, isLoading: true, isError: false}));
+            const res = await fetch(url);
+            const json = await res.json();
+            set((state)=>({...state, products: json.data, isLoading: false, seeMore: true}));  
+        }
         
-        const res = await fetch(API_PRODUCTS);
-        const json = await res.json();
-        set((state)=>({...state, products: json.data}));  
+        catch (error) {
+            console.log(error);
+            set((state)=>({...state, isLoading: false, isError: true}));
+        }
         
     },
+
+  
+   
+
 
     addToCart: (id) => {
         set((state)=>{
