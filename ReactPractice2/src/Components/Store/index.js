@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
 
 
@@ -9,7 +9,9 @@ const useProductStore = create((set, get) => ({
     isLoading: false,
     isError: false,
     seeMore: true,
+
     backToProducts: () => set((state)=>({...state, seeMore: false})),
+   
 
     fetchProducts: async (url) => {
         try {
@@ -26,12 +28,11 @@ const useProductStore = create((set, get) => ({
         
     },
 
-  
-   
 
 
     addToCart: (id) => {
         set((state)=>{
+            
             const product = state.products.find(
                 (currentProduct) => id === currentProduct.id,
             );
@@ -43,20 +44,45 @@ const useProductStore = create((set, get) => ({
 
             if (productInCartId === -1) {
                 product.quantity = 1;
+                product.addedToCart = true;
                 return {...state, cart: [...state.cart, product]};
 
             } 
             state.cart[productInCartId].quantity += 1;
             return {...state};
+
+
             });
+            
     },
 
 
-    clearCart:() => set(() => ({cart: []})),
+    // clearCart:() => set(() => ({cart: []})),
+
+    clearCart: () => set((state) => {
+        // Reset addedToCart flag for all products
+        const updatedProducts = state.products.map(product => {
+            return { ...product, addedToCart: false };
+        });
+    
+        // Clear the cart array
+        const updatedCart = [];
+    
+        return { ...state, products: updatedProducts, cart: updatedCart };
+    }),
+
+    
+
+    getAddedToCartValue: (id) => {
+        return get().products.some(product => product.id === id && product.addedToCart === true );
+    },
+    
+
     deleteProductFromCart: (id) =>
     set((state)=> {
         const updatedCart = state.cart.filter((product)=>{
             if(product.id === id) {
+                product.addedToCart = false;
                 return false;
             }
                 return true;

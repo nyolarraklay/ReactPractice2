@@ -17,8 +17,8 @@ function Nav() {
     <div>  
       <div className="navbar-icon">
          <nav id="navbar">
+ 
     <NavLink to="/">Home</NavLink>
-    <NavLink to="/products">Products</NavLink>
     <NavLink to="/about">About</NavLink>
     <NavLink to="/contacts">Contact</NavLink>
     </nav>

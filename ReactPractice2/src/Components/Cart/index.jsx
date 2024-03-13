@@ -19,6 +19,7 @@ function Cart() {
          <div>
           {price}
          </div>
+          <button onClick={() => handleDeleteItem(id)}>Remove</button>
 
           </div>
           

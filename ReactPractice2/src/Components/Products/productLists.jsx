@@ -1,20 +1,18 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import useProductStore from '../Store'
 import { Link } from 'react-router-dom'
 
 
 
-function Product({ product: { title, description, price, id }, onAddToCart, image }) {
+function Product({ product: { title, description, price, id }, onAddToCart, image}) {
 
-  
-const { cart, seeMore } = useProductStore();
 
-const [addedToCart, setAddedToCart] = useState("");
+const { seeMore, getAddedToCartValue} = useProductStore();
 
+const addedToCart = getAddedToCartValue(id);
 
   function handleButtonClick() {
-    onAddToCart(id);
-    setAddedToCart("Added to cart");
+    onAddToCart(id);   
   }
 
 
@@ -22,14 +20,14 @@ const [addedToCart, setAddedToCart] = useState("");
     <img src={image} alt={title} className="productImage" />
     <div className="cardContent">
       <div className='linkToRedirect'>
-   {seeMore ? <Link to={`/product/${id}`}>See More</Link> : <Link to={`/products/`}>Bact to products</Link>}
+   {seeMore ? <Link to={`/product/${id}`}>See More</Link> : <Link to={`/`}>Bact to products</Link>}
        </div>
   
     <h3>TITLE: {title}</h3>
     <p>Description: {description}</p>
     <p>Price: {price} kr</p>
     <button onClick={handleButtonClick}>Add to cart</button>
-    {cart.length > 0 && <p>{addedToCart}</p>}
+    {addedToCart && <p>Added to Cart</p>}   
     </div>
   </div>
 

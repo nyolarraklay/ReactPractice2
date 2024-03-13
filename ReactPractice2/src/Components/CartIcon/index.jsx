@@ -2,7 +2,7 @@ import { IoCartOutline } from "react-icons/io5"
 import useProductStore from '../Store'
 
 const CartIcon = ({ onClick }) => {
-    const { cart, clearCart,  getTotalNumbersOfItemsInCart} = useProductStore();
+    const { getTotalNumbersOfItemsInCart} = useProductStore();
 
     return (
       <div className="cart-icon" onClick={onClick}>

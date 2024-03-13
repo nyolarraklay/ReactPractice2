@@ -118,3 +118,22 @@ footer {
   color: rgb(251, 114, 114);
   font: 1em sans-serif;
 }
+
+.cardContainerForProduct{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 40px);
+  }
+}
+
+@media (max-width: 160px) {
+  .card {
+    width: calc(100% - 40px);
+  }
+}

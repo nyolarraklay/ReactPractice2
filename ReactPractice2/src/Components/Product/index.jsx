@@ -44,7 +44,7 @@ function ProductIndividual() {
     return <p>Something went wrong</p>
   } else {
     return (
-      <div className="cardContainer"> 
+      <div className="cardContainerForProduct"> 
 
         <Product
           product={data}
