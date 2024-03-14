@@ -4,7 +4,7 @@ import Product from '../Products/productLists'
 
 
 function ApiLists() {
-    const { products, fetchProducts, addToCart } = useProductStore();
+    const { products, fetchProducts, addToCart} = useProductStore();
 
     useEffect(() => {
         fetchProducts();

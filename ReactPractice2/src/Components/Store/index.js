@@ -33,8 +33,6 @@ const useProductStore = create((set, get) => ({
         
     },
 
-
-
     addToCart: (id) => {
         set((state)=>{
             
@@ -106,7 +104,7 @@ const useProductStore = create((set, get) => ({
             get().products.find(product => {
                 if(product.id === id) {
                     const discount = Math.floor((product.price - product.discountedPrice) / product.price * 100)
-                    return discount;
+                return discount;
                 } 
                 
             });
