@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useState } from 'react'
 import useProductStore from '../Store'
 import { Link } from 'react-router-dom'
 
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 function Product({ product: { title, description, price, id }, onAddToCart, image}) {
 
 
-const { seeMore, getAddedToCartValue} = useProductStore();
+const { seeMore, getAddedToCartValue, getDiscountValue } = useProductStore();
 
 const addedToCart = getAddedToCartValue(id);
 
@@ -26,6 +26,7 @@ const addedToCart = getAddedToCartValue(id);
     <h3>TITLE: {title}</h3>
     <p>Description: {description}</p>
     <p>Price: {price} kr</p>
+    <p>Discount: {getDiscountValue(id)} kr</p>
     <button onClick={handleButtonClick}>Add to cart</button>
     {addedToCart && <p>Added to Cart</p>}   
     </div>

@@ -9,6 +9,9 @@ const useProductStore = create((set, get) => ({
     isLoading: false,
     isError: false,
     seeMore: true,
+    showModal: false,
+
+    handleToggleModal: () => set((state)=>({...state, showModal: !state.showModal})),
 
     backToProducts: () => set((state)=>({...state, seeMore: false})),
    
@@ -18,7 +21,9 @@ const useProductStore = create((set, get) => ({
            set((state)=>({...state, isLoading: true, isError: false}));
             const res = await fetch(url);
             const json = await res.json();
-            set((state)=>({...state, products: json.data, isLoading: false, seeMore: true}));  
+            const data = json.data;          
+            set((state)=>({...state, products: data, isLoading: false, seeMore: true}));  
+            
         }
         
         catch (error) {
@@ -56,18 +61,11 @@ const useProductStore = create((set, get) => ({
             
     },
 
-
-    // clearCart:() => set(() => ({cart: []})),
-
     clearCart: () => set((state) => {
-        // Reset addedToCart flag for all products
         const updatedProducts = state.products.map(product => {
             return { ...product, addedToCart: false };
         });
-    
-        // Clear the cart array
         const updatedCart = [];
-    
         return { ...state, products: updatedProducts, cart: updatedCart };
     }),
 
@@ -102,11 +100,21 @@ const useProductStore = create((set, get) => ({
         get().cart.reduce((total, product) => {
             total += product.quantity;
             return total;
-        }, 0),
+        }, 0),   
+
+        getDiscountValue: (id) => {
+            get().products.find(product => {
+                if(product.id === id) {
+                    const discount = Math.floor((product.price - product.discountedPrice) / product.price * 100)
+                    return discount;
+                } 
+                
+            });
+        },
+        
+      
     }));
 
-
-
-
 export default useProductStore;
+
 
