@@ -59,6 +59,29 @@ const useProductStore = create((set, get) => ({
             
     },
 
+    removedFromCart: (id) => {
+        set((state) => {
+            const productIndex = state.cart.findIndex(
+                (currentProduct) => id === currentProduct.id
+            );
+    
+            if (productIndex !== -1) {
+                const updatedCart = [...state.cart];
+                const product = updatedCart[productIndex];
+                
+                if (product.quantity === 1) {
+                    updatedCart.splice(productIndex, 1);
+                } else {
+                    product.quantity -= 1;
+                }
+    
+                return { ...state, cart: updatedCart };
+            }
+    
+            return { ...state };
+        });
+    },
+
     clearCart: () => set((state) => {
         const updatedProducts = state.products.map(product => {
             return { ...product, addedToCart: false };
@@ -89,7 +112,7 @@ const useProductStore = create((set, get) => ({
                 
         getCartTotal: () =>
         get().cart.reduce((total, product) => {
-            const currentPrice = product.quantity * product.price;
+            const currentPrice = product.quantity * (product.discountedPrice ? product.discountedPrice : product.price);
             total += currentPrice
             return total;
         }, 0),

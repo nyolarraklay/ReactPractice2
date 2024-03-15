@@ -1,32 +1,46 @@
+import { useEffect } from "react";
 import useProductStore from "../Store"
 import { Link } from "react-router-dom";
 
 
 function Cart() {
   const { handleToggleModal } = useProductStore();
-  const { cart, deleteProductFromCart, getCartTotal, clearCart } = useProductStore();
+  const { cart, deleteProductFromCart, getCartTotal, clearCart, addToCart, removedFromCart } = useProductStore();
+ 
   function handleDeleteItem(id) {
     deleteProductFromCart(id);
   }
-  
+
+function handleAddQuantity(id) {
+  addToCart(id);
+}
+
+function handleDeleteQuantity(id) {
+  removedFromCart(id);
+}
 
 
   return (
     <div className='cartContainer'>    
-      {cart.map(({id, title, quantity, price, image}) => (
+      {cart.map(({id, title, quantity, price, image, discountedPrice}) => (
         <div key={id}>
           <div className="cartProducts">
           <img src={image.url} alt={title} className="thumbnail" />
           <div className="cartProductDetails">
           <div>
-            {title}: {quantity}
+            {title}
           </div>
-          
          <div>
-          {price}
+          Price: ${discountedPrice ? discountedPrice : price}
          </div>
           <button onClick={() => handleDeleteItem(id)}>Remove</button>
+          <div className="quantity-box">
+          <button onClick={() => handleDeleteQuantity(id)}>-</button>
+          <p>{quantity}</p>
+          <button onClick={() => handleAddQuantity(id)}>+</button>
+          </div>
          </div>
+         
          </div>
           </div>
           
