@@ -7,14 +7,10 @@ const Paragraph = styled.p`
   text-decoration: ${(props)=>(props.isDiscounted > 0 ? 'line-through' : 'none')};
 `;
 
-
-
 function Product({ product: { title, description, price, id, discountedPrice }, onAddToCart, image}) {
-
 const { seeMore, getAddedToCartValue} = useProductStore();
 const addedToCart = getAddedToCartValue(id);
 const discount = Math.floor((price - discountedPrice) / price * 100);
-
 
   function handleButtonClick() {
     onAddToCart(id);   
@@ -23,7 +19,8 @@ const discount = Math.floor((price - discountedPrice) / price * 100);
   return <div className="card">
     <img src={image} alt={title} className="productImage" />
     <div className="cardContent">
-      <div className='linkToRedirect'>
+    <div className='linkToRedirect'>
+        
    {seeMore ? <Link to={`/product/${id}`}>See More</Link> : <Link to={`/`}>Bact to products</Link>}
        </div>
   

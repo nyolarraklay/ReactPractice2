@@ -5,6 +5,7 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Products from './Components/Home/index.jsx'
 import ProductIndividual from './Components/Product/index.jsx'
+import CheckOut from './Components/Checkout'
 
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<Products />} />
           <Route path="product/:id" element={<ProductIndividual />} />
           <Route path="about" element={<About />} />
+          <Route path="checkout" element={<CheckOut />} />
           <Route path="contacts" element={<Contacts />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>

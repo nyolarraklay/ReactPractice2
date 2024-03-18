@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 
 function Cart() {
-  const { handleToggleModal } = useProductStore();
-  const { cart, deleteProductFromCart, getCartTotal, clearCart, addToCart, removedFromCart } = useProductStore();
+  const { handleToggleModal, cart, deleteProductFromCart, getCartTotal, clearCart, addToCart, removedFromCart } = useProductStore();
  
   function handleDeleteItem(id) {
     deleteProductFromCart(id);
@@ -49,7 +48,7 @@ function handleDeleteQuantity(id) {
         {cart.length < 1 ? <p>Cart is empty</p> : <div>
         <p>Cart total: ${getCartTotal().toFixed(2)}</p> <div className="cartButtons">
         <button className="clear-cart" onClick={clearCart}>Clear Cart</button>
-        <button className="checkout" onClick={handleToggleModal}><Link to={'/contacts'}>Checkout</Link></button>
+        <button className="checkout" onClick={handleToggleModal}><Link to={'/checkout'}>Checkout</Link></button>
         <button className="continue-shopping" onClick={handleToggleModal}>Continue Shopping</button>
         </div>
 </div>

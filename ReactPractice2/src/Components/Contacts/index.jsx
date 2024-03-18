@@ -1,72 +1,62 @@
-import  { useState } from 'react' 
+
+import {useForm} from 'react-hook-form'
+import schema from "../Validation"
+import { yupResolver } from '@hookform/resolvers/yup';
+
 
 function Contacts() {
-  const [fullName, setFullName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [subject, setSubject] = useState('')
+  const { register, handleSubmit, formState:{errors}, } = useForm({
+    resolver: yupResolver(schema)
+});
 
-function onTextInputChange(e) {
-  const value = e.target.value
-  if(e.target.name === 'full-name') {
-    setFullName(value)
-  } else if(e.target.name === 'subject') {
-    setSubject(value)
-  } else if(e.target.name === 'email') {
-    setEmail(value)
-  } else if(e.target.name === 'message') {
-    setMessage(value)
-  }
+function onSubmit(data) {
+    data.preventDefault();
+console.log(data);
 }
-
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    console.log(fullName,subject, email, message)
-  }
 
   return (
     <div className='contact-form'>
       <h1>Contact Us</h1>
-      <form onSubmit={handleSubmit}>
+      <form action="" onSubmit={handleSubmit(onSubmit)}>
         <div className='form-group'>
-           <label htmlFor="full-name">Full name </label>
+           <label htmlFor="name">Full name </label>
           <input
           type='text'
-          name="full-name"
-          value={fullName} 
+          name="name"
           placeholder="Your first name"
-          onChange={onTextInputChange} 
+          {...register('name')}
           />
+          <p className="form-errors">{errors.name?.message}</p>
         </div>
         <div className='form-group'>
            <label htmlFor="subject">Subject </label>
           <input
           type='text'
           name="subject"
-          value={email} 
           placeholder="Subject"
-          onChange={onTextInputChange} 
+          {...register('subject')}
           />
+          <p className="form-errors">{errors.subject?.message}</p>
         </div>
         <div className='form-group'>
            <label htmlFor="email">Email </label>
           <input
           type='email'
           name="email"
-          value={email} 
           placeholder="Your email"
-          onChange={onTextInputChange} 
+          {...register('email')}
+         
           />
+          <p className="form-errors">{errors.email?.message}</p>
         </div>
         <div className='form-group'>
           <label htmlFor="message">Message </label>
           <textarea
           name="message"
-          value={message} 
           placeholder="Your message"
-          onChange={onTextInputChange} 
+          {...register('message')}
           />
+          <p className="form-errors">{errors.message?.message}</p>
         </div>
         <div className='form-group'>
         
