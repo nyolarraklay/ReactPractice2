@@ -1,24 +1,19 @@
 import Cart  from '../Cart';
 import { NavLink } from "react-router-dom"
-import { useState } from 'react'
 import CartIcon from '../CartIcon';
+import useProductStore from '../Store';
 
 
 
 function Nav() {
-  const [showModal, setShowModal] = useState(false);
-
-  const handleToggleModal = () => {
-    setShowModal(!showModal);
-  };
-
+  const { showModal, handleToggleModal } = useProductStore();
 
   return (
     <div>  
       <div className="navbar-icon">
          <nav id="navbar">
+ 
     <NavLink to="/">Home</NavLink>
-    <NavLink to="/products">Products</NavLink>
     <NavLink to="/about">About</NavLink>
     <NavLink to="/contacts">Contact</NavLink>
     </nav>
@@ -29,7 +24,10 @@ function Nav() {
            <div className="overlay"></div>
           <div className="modal">
             <div className="modalContent">
-              <button onClick={() => setShowModal(false)}>Close</button>
+              <div className="cartTopSection">
+              <button onClick={handleToggleModal} className='closeCart'>&times;</button>
+              <h2>My Shopping Cart</h2>
+              </div>
               <Cart />
             </div>
           </div>

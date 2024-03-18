@@ -1,12 +1,11 @@
 import Layout from './Components/LayOut'
-import Home from './Components/Home'
 import About from './Components/About'
 import Contacts from './Components/Contacts'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import Products from './Components/Products'
-import Product from './Components/Products/productLists.jsx'
-import ApiLists from './Components/APILists/index.jsx'
+import Products from './Components/Home/index.jsx'
+import ProductIndividual from './Components/Product/index.jsx'
+import CheckOut from './Components/Checkout'
 
 
 
@@ -30,10 +29,10 @@ function App() {
       <Routes>
 
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="products" element={<Products />} />
-          <Route path="product/:id" element={<Product />} />
+          <Route index element={<Products />} />
+          <Route path="product/:id" element={<ProductIndividual />} />
           <Route path="about" element={<About />} />
+          <Route path="checkout" element={<CheckOut />} />
           <Route path="contacts" element={<Contacts />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>
