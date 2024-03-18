@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const schema = yup.object({
+let schema = yup.object({
     email: yup.string().email('Must be a valid email address').required('Email is required'),
     name: yup.string().required().min(3, 'Name must be at least 3 characters'),
     address: yup.string().required().min(3, 'Address must be at least 3 characters'),
