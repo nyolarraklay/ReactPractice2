@@ -1,8 +1,18 @@
-
 import useProductStore from "../Store"
 import {useForm} from 'react-hook-form'
-import schema from "../Validation"
 import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object({
+    email: yup.string().email('Must be a valid email address').required('Email is required'),
+    name: yup.string().required().min(3, 'Name must be at least 3 characters'),
+    address: yup.string().required().min(3, 'Address must be at least 3 characters'),
+    city: yup.string().required().min(3, 'City must be at least 3 characters'),
+    country: yup.string().required().min(3, 'Country must be at least 3 characters'),
+    zip: yup.string().required().matches(/^\d{4}(-\d{3})?$/, 'Invalid zip code'),
+    phone: yup.string().required().matches(/^[0-9]{10}$/, 'Invalid phone number'),
+})
+
 
 function CheckOut() {
         const { cart, getCartTotal } = useProductStore();
@@ -24,11 +34,11 @@ function onSubmit(data) {
                 <form action="" className="checkout-form" onChange={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" {...register('email')}/>
+                    <input type="email" name="email" {...register('email')}/>
                     <p className="form-errors">{errors.email?.message}</p>
                 </div>
                 <div className="form-group-checkbox">
-                    <input type="checkbox" name="checkbox" id="checkbox" {...register('checkbox')}/>
+                    <input type="checkbox" name="checkbox"  {...register('checkbox')}/>
                     <label htmlFor="checkbox">Email me with news and offers</label>
                 </div> 
                 </form>
@@ -40,32 +50,32 @@ function onSubmit(data) {
                 <form action="" className="checkout-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="name" {...register('name')}/>
+                    <input type="text" name="name"  {...register('name')}/>
                     <p className="form-errors">{errors.name?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="address">Address</label>
-                    <input type="text" name="address" id="address" {...register('address')}/>
+                    <input type="text" name="address" {...register('address')}/>
                     <p className="form-errors">{errors.address?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="city">City</label>
-                    <input type="text" name="city" id="city" {...register('city')}/>
+                    <input type="text" name="city"  {...register('city')}/>
                     <p className="form-errors">{errors.city?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="country">Country</label>
-                    <input type="text" name="country" id="country" {...register('country')}/>
+                    <input type="text" name="country"  {...register('country')}/>
                     <p className="form-errors">{errors.country?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="zip">Zip</label>
-                    <input type="text" name="zip" id="zip" {...register('zip')}/>
+                    <input type="text" name="zip"  {...register('zip')}/>
                     <p className="form-errors">{errors.zip?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="phone">Phone</label>
-                    <input type="text" name="phone" id="phone" {...register('phone')} />
+                    <input type="text" name="phone"  {...register('phone')} />
                     <p className="form-errors">{errors.phone?.message}</p>
                 </div>
                 <button type="submit" className="checkout-button">Continue to Payment</button>

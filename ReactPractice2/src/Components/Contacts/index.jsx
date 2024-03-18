@@ -1,7 +1,14 @@
 
 import {useForm} from 'react-hook-form'
-import schema from "../Validation"
 import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object({
+    email: yup.string().email('Must be a valid email address').required('Email is required'),
+    name: yup.string().required().min(3, 'Name must be at least 3 characters'),
+    subject: yup.string().required().min(3, 'Subject must be at least 3 characters'),
+    message: yup.string().required().min(8, 'Message must be at least 8 characters'),
+})
 
 
 function Contacts() {
@@ -10,7 +17,6 @@ function Contacts() {
 });
 
 function onSubmit(data) {
-    data.preventDefault();
 console.log(data);
 }
 
@@ -21,7 +27,6 @@ console.log(data);
         <div className='form-group'>
            <label htmlFor="name">Full name </label>
           <input
-          type='text'
           name="name"
           placeholder="Your first name"
           {...register('name')}
@@ -31,7 +36,6 @@ console.log(data);
         <div className='form-group'>
            <label htmlFor="subject">Subject </label>
           <input
-          type='text'
           name="subject"
           placeholder="Subject"
           {...register('subject')}
@@ -41,7 +45,6 @@ console.log(data);
         <div className='form-group'>
            <label htmlFor="email">Email </label>
           <input
-          type='email'
           name="email"
           placeholder="Your email"
           {...register('email')}
