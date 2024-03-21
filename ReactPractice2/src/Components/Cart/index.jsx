@@ -49,7 +49,7 @@ function handleDeleteQuantity(id) {
         <p>Cart total: ${getCartTotal().toFixed(2)}</p> <div className="cartButtons">
         <button className="clear-cart" onClick={clearCart}>Clear Cart</button>
         <button className="checkout" onClick={handleToggleModal}><Link to={'/checkout'}>Checkout</Link></button>
-        <button className="continue-shopping" onClick={handleToggleModal}>Continue Shopping</button>
+        <button className="continue-shopping" onClick={handleToggleModal}> <Link to={'/'}> Continue Shopping </Link></button>
         </div>
 </div>
 }

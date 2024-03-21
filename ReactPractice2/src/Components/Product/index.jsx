@@ -39,7 +39,12 @@ function ProductIndividual() {
     addToCart(id);
   }
   if(isLoading) {
-    return <p>Loading...</p>
+    return <div className="loader">
+    <div className='dot'></div>
+    <div className='dot'></div>
+    <div className='dot'></div>
+    <div className='dot'></div>
+  </div> 
   } else if (!data || isError) {
     return <p>Something went wrong</p>
   } else {

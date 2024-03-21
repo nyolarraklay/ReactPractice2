@@ -20,7 +20,13 @@ function Products() {
     addToCart(id);
   }
   if(isLoading) {
-    return <p>Loading...</p>
+    return <div className="loader">
+      <div className='dot'></div>
+      <div className='dot'></div>
+      <div className='dot'></div>
+      <div className='dot'></div>
+    </div> 
+   
   } else if (!products || isError) {
     return <p>Something went wrong</p>
   } else {
