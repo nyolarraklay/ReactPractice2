@@ -11,10 +11,12 @@ import Product from '../Products/productLists.jsx';
 
 
 function ProductIndividual() {
-  const { addToCart, isLoading, isError, backToProducts} = useProductStore();
+  const { addToCart, backToProducts} = useProductStore();
   let { id } = useParams();
   const API_PRODUCT = API_PRODUCTS + id;
   const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setError] = useState(false);
   
   
   useEffect(() => {
@@ -26,8 +28,10 @@ function ProductIndividual() {
           const json = await response.json();
   
           setData(json.data);
-          backToProducts()
+          backToProducts();
+          setIsLoading(false);
         } catch (error) {
+          setError(true);
           console.log(error);
         } 
       }
