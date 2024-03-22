@@ -2,6 +2,7 @@ import Nav from "../Navigation"
 import SearchComponent from '../Search';
 import { useEffect, useState } from 'react';
 import SearchResultsList from '../SearchResults';
+import ModalCart from "../ModalCart";
 
 
 
@@ -38,10 +39,12 @@ useEffect(() => {
         <SearchComponent setResults={setResults}/>
         <SearchResultsList results={results} clearInput={clearInput}/>
       </div>
-        {showNav && ( 
+       
           <Nav />
-          )
-        }
+        
+          
+        
+          <ModalCart />
     </header>
   )
 }

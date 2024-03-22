@@ -38,23 +38,37 @@ header {
   align-items: center;
   position: fixed;
   z-index: 99;
-  box-shadow: 0 0 10px grey;
+  top: 0;
+  left: 0;
 }
+
 #check1{
   display: none;
 
 }
 
 header .logo{
-  flex: 1;
+
   color: white;
   margin-left: 50px;
   text-transform: uppercase;
 }
 
 .search-box{
-  flex: 1;
+  
   position: relative;
+}
+
+.search-results-container{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgb(19, 3, 3);
+
+  border-top: none;
+
+
 }
 
 
