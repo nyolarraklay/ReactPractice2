@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+}
+
+button:hover {
+  @apply bg-blue-700;
+}
+
+.card {
+  @apply bg-black text-white p-3 rounded-lg shadow-lg  border border-white flex flex-col justify-between; ;
+}
+
+
+header {
+  @apply bg-gray-800 text-white flex justify-between p-6 ;
+}
+
+.productImage {
+  @apply w-full h-64 object-cover rounded-lg;
+}

@@ -30,10 +30,10 @@ useEffect(() => {
 
 
   return (
-    <header>
-      <input type="checkbox" name="" id="check1" />
-    <div className="logo">
-      <h1>Noroff Online SHop</h1>
+    <header className="grid md:grid-cols-3">
+      <input type="checkbox" name="" id="check1" className=" md:hidden"/>
+    <div className="text-4xl">
+      <h1>Noroff Online Shop</h1>
       </div>
       <div className='search-box'>
         <SearchComponent setResults={setResults}/>

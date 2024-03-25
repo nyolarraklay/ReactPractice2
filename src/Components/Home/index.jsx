@@ -31,7 +31,7 @@ function Products() {
     return <p>Something went wrong</p>
   } else {
     return (
-      <div className="cardContainer" style={{ position: 'relative' }}> 
+      <div className=" my-20 grid justify-items-center md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 relative"> 
       {products.map((product) => (
         <Product
           product={product}
