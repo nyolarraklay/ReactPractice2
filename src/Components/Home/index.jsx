@@ -1,7 +1,8 @@
 import useProductStore from '../Store/index.js'
 import Product from '../Products/productLists.jsx'
 import { useEffect, useState } from 'react'
-
+import SearchResultsList from '../SearchResults';
+import SearchComponent from '../Search';
 import  API_PRODUCTS  from '../shared/apis.js';
 
 
@@ -9,6 +10,15 @@ import  API_PRODUCTS  from '../shared/apis.js';
 
 function Products() {
   const { products, fetchProducts, addToCart, isLoading, isError} = useProductStore();
+  const [results, setResults] = useState([]);
+
+  
+  
+  function clearInput() {
+    setResults ([]);
+    
+
+  }
 
   useEffect(() => {
     fetchProducts(API_PRODUCTS);
@@ -31,7 +41,14 @@ function Products() {
     return <p>Something went wrong</p>
   } else {
     return (
-      <div className=" my-20 grid justify-items-center md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 relative"> 
+      <div className='col-span-2 '>
+           <div>
+         <div className='search-box'>
+        <SearchComponent setResults={setResults}/>
+        <SearchResultsList results={results} clearInput={clearInput}/>
+      </div>
+      </div>
+      <div className="grid justify-items-center md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 "> 
       {products.map((product) => (
         <Product
           product={product}
@@ -40,6 +57,8 @@ function Products() {
           image={product.image.url}
         />
       ))}
+      </div>
+   
 
     </div>
     )
@@ -51,7 +70,7 @@ function Products() {
 
 export default Products
 
-//Remember the 3 rules of optimization:
+//Remember the 3 rules of optimization:   relative
 //make it work
 //make it right
 //make it fast
