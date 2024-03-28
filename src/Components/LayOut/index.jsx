@@ -10,9 +10,15 @@ import { Outlet } from "react-router-dom";
 function Layout ()  {
   return (
     <>
+    <div className="grid grid-cols-3">
     <Header />
         <Outlet />
-       <Footer />
+    </div>
+    <div>
+    <Footer />
+    </div>
+   
+       
     </>
         
     

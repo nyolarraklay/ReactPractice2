@@ -1,7 +1,6 @@
 import Nav from "../Navigation"
-import SearchComponent from '../Search';
 import { useEffect, useState } from 'react';
-import SearchResultsList from '../SearchResults';
+
 import ModalCart from "../ModalCart";
 
 
@@ -31,20 +30,9 @@ useEffect(() => {
 
   return (
     <header>
-      <input type="checkbox" name="" id="check1" />
-    <div className="logo">
-      <h1>Noroff Online SHop</h1>
-      </div>
-      <div className='search-box'>
-        <SearchComponent setResults={setResults}/>
-        <SearchResultsList results={results} clearInput={clearInput}/>
-      </div>
-       
+      <input type="checkbox" name="" id="check1" className=" md:hidden"/>
           <Nav />
-        
-          
-        
-          <ModalCart />
+          {/* <ModalCart /> */}
     </header>
   )
 }
