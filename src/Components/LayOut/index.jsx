@@ -1,29 +1,19 @@
-
-import Header from "../Header"
-import Footer from "../Footer"
+import Header from "../Header";
+import Footer from "../Footer";
 import { Outlet } from "react-router-dom";
 
-
-
-
-  
-function Layout ()  {
+function Layout() {
   return (
     <>
-    <div className="grid grid-cols-3">
-    <Header />
+      <div className="flex ">
+        <Header />
         <Outlet />
-    </div>
-    <div>
-    <Footer />
-    </div>
-   
-       
+      </div>
+      <div>
+        <Footer />
+      </div>
     </>
-        
-    
   );
 }
 
-
-export default Layout
+export default Layout;
