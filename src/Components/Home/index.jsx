@@ -1,7 +1,8 @@
 import useProductStore from "../Store/index.js";
 import Product from "../Products/productLists.jsx";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import API_PRODUCTS from "../shared/apis.js";
+import CartIcon from "../CartIcon/index.jsx";
 
 function Products() {
   const { products, fetchProducts, addToCart, isLoading, isError } =
@@ -27,9 +28,11 @@ function Products() {
     return <p>Something went wrong</p>;
   } else {
     return (
-      <div className="col-span-2 ">
-        <div></div>
-        <div className="grid justify-items-center md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 ">
+      <div className="col-span-2 flex space-y-10">
+        <dive className="bg-cyan-700 flex h-10 fixed w-full items-center">
+          <CartIcon />
+        </dive>
+        <div className="grid justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 4xl:grid-cols-5 ">
           {products.map((product) => (
             <Product
               product={product}
