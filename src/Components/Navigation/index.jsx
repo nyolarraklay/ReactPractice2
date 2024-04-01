@@ -5,9 +5,9 @@ import { NavLink } from "react-router-dom";
 import SearchResultsList from "../SearchResults";
 import useProductStore from "../Store";
 import { FaSearch } from "react-icons/fa";
+import CartIcon from "../CartIcon";
 
-function Nav() {
-  const [open, setOpen] = useState(true);
+function Nav({ isOpen, toggleSidebar }) {
   const [results, setResults] = useState([]);
   const { products } = useProductStore();
   const [input, setInput] = useState("");
@@ -48,21 +48,21 @@ function Nav() {
   return (
     <div
       className={`relative h-screen p-5 pt-8 ${
-        open ? "w-64" : "w-14"
+        isOpen ? "w-64" : "w-14"
       } duration-300`}
     >
       <nav id="navbar">
         <FaArrowCircleLeft
           className={`absolute -right-9 top-9 text-3xl cursor-pointer ${
-            !open && "rotate-180"
+            !isOpen && "rotate-180"
           }`}
-          onClick={() => setOpen(!open)}
+          onClick={toggleSidebar}
         />
         <div className="inline-flex">
           <FcShop className="text-5xl cursor-pointer block float-left mr-2" />
           <h1
             className={`font-medium origin-left text-2xl duration-300 ${
-              !open && "scale-0"
+              !isOpen && "scale-0"
             }`}
           >
             Noroff Shop
@@ -70,19 +70,19 @@ function Nav() {
         </div>
         <div
           className={`flex items-center rounded-md bg-zinc-700 mt-6 ${
-            !open ? "px-2 w-8" : "px-4"
+            !isOpen ? "px-2 w-8" : "px-4"
           } py-2`}
           onClick={handleItemClick}
         >
           <FaSearch
             className={`text-white text-lg block cursor-pointer float-left ${
-              open && "mr-2 ml-0"
+              isOpen && "mr-2 ml-0"
             } `}
-            onClick={() => setOpen(!open)}
+            onClick={toggleSidebar}
           />
           <input
             className={`text-base bg-transparent w-full text-white focus:outline-none ${
-              !open && "hidden"
+              !isOpen && "hidden"
             }`}
             type={"search"}
             placeholder="Type to search....."
@@ -96,22 +96,22 @@ function Nav() {
           <div className="flex flex-col text-xl">
             <NavLink to="/" className="nav-link flex items-center gap-1">
               <div
-                className={`flex items-center rounded-md bg-zinc-700 mt-6 ${
-                  !open ? "px-2 w-8" : "px-4"
+                className={`flex gap-4 items-center rounded-md bg-zinc-700 mt-6 ${
+                  !isOpen ? "px-2 w-8" : "px-4"
                 } py-2`}
               >
                 <FcHome className="text-lg  " />
-                <h2 className={`${!open && "hidden"}`}>Home</h2>
+                <h2 className={`${!isOpen && "hidden"}`}>Home</h2>
               </div>
             </NavLink>
             <NavLink to="/about" className="nav-link flex items-center gap-1">
               <div
-                className={`flex items-center rounded-md bg-zinc-700 mt-6 ${
-                  !open ? "px-2 w-8" : "px-4"
+                className={`flex gap-4 items-center rounded-md bg-zinc-700 mt-6 ${
+                  !isOpen ? "px-2 w-8" : "px-4"
                 } py-2`}
               >
                 <FcAbout className="text-lg  " />
-                <h2 className={`${!open && "hidden"}`}>About</h2>
+                <h2 className={`${!isOpen && "hidden"}`}>About</h2>
               </div>
             </NavLink>
             <NavLink
@@ -119,14 +119,15 @@ function Nav() {
               className="nav-link flex items-center gap-1"
             >
               <div
-                className={`flex items-center rounded-md bg-zinc-700 mt-6 ${
-                  !open ? "px-2 w-8" : "px-4"
+                className={`flex gap-4 items-center rounded-md bg-zinc-700 mt-6 ${
+                  !isOpen ? "px-2 w-8" : "px-4"
                 } py-2`}
               >
                 <FcFeedback className="text-lg  " />
-                <h2 className={`${!open && "hidden"}`}>Contact Us</h2>
+                <h2 className={`${!isOpen && "hidden"}`}>Contact Us</h2>
               </div>
             </NavLink>
+            <CartIcon isOpen={isOpen} />
           </div>
         )}
       </nav>

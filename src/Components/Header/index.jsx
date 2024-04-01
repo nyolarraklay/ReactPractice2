@@ -1,11 +1,11 @@
 import Nav from "../Navigation";
 import ModalCart from "../ModalCart";
 
-function Header() {
+function Header({ isOpen, toggleSidebar }) {
   return (
     <header>
-      <Nav />
-      {/* <ModalCart /> */}
+      <Nav isOpen={isOpen} toggleSidebar={toggleSidebar} />
+      <ModalCart />
     </header>
   );
 }
