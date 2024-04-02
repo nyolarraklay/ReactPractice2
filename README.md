@@ -1,3 +1,13 @@
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
 
 a{
   text-decoration: none;
@@ -14,18 +24,63 @@ a{
   color: black;
 }
 
+ .search-results:hover {
+  background-color: #d20c0c;
+  color: white;
+}
+
+
 #navbar a {
   color: white;
   padding: 4px 10px;
   text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 header {
   background-color: #333;
   color: #fff;
-  padding: 20px;
-  text-align: start;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
 }
+
+#check1{
+  display: none;
+
+}
+
+header .logo{
+
+  color: white;
+  margin-left: 50px;
+  text-transform: uppercase;
+}
+
+.search-box{
+  
+  position: relative;
+}
+
+.search-results-container{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgb(19, 3, 3);
+
+  border-top: none;
+
+
+}
+
 
 /* Footer Styles */
 footer {
@@ -231,6 +286,34 @@ footer {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+/* search */
+.input-wrapper{
+  display: flex;
+ align-items: center;
+ box-shadow: 0px 0px 8px white;
+ padding: 0 15px;
+ border-radius: 10px;
+ height: 2rem;
+ width: 75%;
+ background-color: white;
+  margin: 10px 0;
+}
+.search-input {
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  background-color: transparent;
+  margin-left: 5px;
+}
+.search-input:focus {
+  outline: none;
+}
+
+.search-icon {
+  color: royalblue;
 }
 /* 
 Loaders */

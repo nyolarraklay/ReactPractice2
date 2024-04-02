@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+}
+
+button:hover {
+  @apply bg-blue-700;
+}
+
+.card {
+  @apply bg-black text-white p-6 rounded-lg shadow-lg  border border-white flex flex-col justify-between;
+}
+
+header {
+  @apply bg-gray-800 text-white p-6 fixed;
+}
+
+.productImage {
+  @apply w-full h-64 object-cover rounded-lg;
+}
+body {
+  @apply bg-gray-600;
+}
+.overlay {
+  @apply bg-transparent fixed top-0 left-0 w-full h-full z-40;
+}
+
+.modal {
+  @apply bg-zinc-500 p-4 absolute top-45 left-full transform -translate-x-1/2 -translate-y-1/2 text-white max-h-90vh overflow-y-auto z-50 border rounded-lg shadow-slate-900 w-96;
+}
+
+@layer utilities {
+  .max-h-90vh {
+    max-height: 90vh;
+  }
+  .top-45 {
+    top: 45%;
+  }
+}
