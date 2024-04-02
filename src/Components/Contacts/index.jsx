@@ -32,7 +32,7 @@ function Contacts() {
   }
 
   return (
-    <div className="contact-form max-w-md mx-auto">
+    <div className="contact-form max-w-md mx-auto p-8">
       <h1 className="text-2xl font-bold mb-4">Contact Us</h1>
       <form action="" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="form-group">

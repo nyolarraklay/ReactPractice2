@@ -3,6 +3,7 @@ import Product from "../Products/productLists.jsx";
 import { useEffect } from "react";
 import API_PRODUCTS from "../shared/apis.js";
 import CartIcon from "../CartIcon/index.jsx";
+import Search from "../Search/index.jsx";
 
 function Products({ isOpen }) {
   const { products, fetchProducts, addToCart, isLoading, isError } =
@@ -28,7 +29,10 @@ function Products({ isOpen }) {
     return <p>Something went wrong</p>;
   } else {
     return (
-      <div className="p-4 grid justify-items-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-6 gap-3 ">
+      <div className="block">
+          <Search />
+          <div className="px-8 py-1 sm:mt-0 sm:p-4 grid justify-items-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-6 gap-3 ">
+     
         {products.map((product) => (
           <Product
             product={product}
@@ -38,6 +42,8 @@ function Products({ isOpen }) {
           />
         ))}
       </div>
+      </div>
+      
     );
   }
 }

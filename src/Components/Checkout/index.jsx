@@ -25,15 +25,18 @@ function onSubmit(data) {
 }
 
   return (
-    <div>
-        <h1 className="checkout-h1">Checkout</h1>
-   <div className="checkout-page">
-        <div className="checkout-container">
+    <div className="p-8">
+        <h1 className="text-3xl font-bold mb-4">Checkout</h1>
+      
+        <div className="grid max-w-lg mx-auto md:grid-cols-2 sm:grid-cols-1 gap-3" >
+            <div className="checkout-container">
             <div>
-                <h2 className="checkout-heading">Contact Information</h2>
-                <form action="" className="checkout-form" onChange={handleSubmit(onSubmit)}>
+                <h2 className="text-xl font-bold mb-4">Contact Information</h2>
+                <form action="" className="space-y-4" onChange={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email"
+                     className="block text-sm font-medium text-gray-700"
+                    >Email</label>
                     <input type="email" name="email" {...register('email')}/>
                     <p className="form-errors">{errors.email?.message}</p>
                 </div>
@@ -45,78 +48,77 @@ function onSubmit(data) {
              </div>
             <div>
                 <div>
-                    <h2 className="checkout-heading">Shipping address</h2>
+                    <h2 className="text-xl font-bold mb-4">Shipping address</h2>
                 </div>
-                <form action="" className="checkout-form" onSubmit={handleSubmit(onSubmit)}>
+                <form action="" className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
                     <input type="text" name="name"  {...register('name')}/>
                     <p className="form-errors">{errors.name?.message}</p>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="address">Address</label>
+                    <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
                     <input type="text" name="address" {...register('address')}/>
                     <p className="form-errors">{errors.address?.message}</p>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="city">City</label>
+                    <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
                     <input type="text" name="city"  {...register('city')}/>
                     <p className="form-errors">{errors.city?.message}</p>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="country">Country</label>
+                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">Country</label>
                     <input type="text" name="country"  {...register('country')}/>
                     <p className="form-errors">{errors.country?.message}</p>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="zip">Zip</label>
+                    <label htmlFor="zip" className="block text-sm font-medium text-gray-700">Zip</label>
                     <input type="text" name="zip"  {...register('zip')}/>
                     <p className="form-errors">{errors.zip?.message}</p>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="phone">Phone</label>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
                     <input type="text" name="phone"  {...register('phone')} />
                     <p className="form-errors">{errors.phone?.message}</p>
                 </div>
-                <button type="submit" className="checkout-button">Continue to Payment</button>
+                <button type="submit"  className="inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+           >Continue to Payment</button>
                 </form>
             </div>
-        </div>
+            </div>
         
-        <div className='cartContainer'>  
-<h2>Order Summary</h2>
-        <div>
-            {cart.map(({id, title, quantity, price, image, discountedPrice}) => (
-                <div key={id}>
-                    <div className="cartProducts">
-                        <img src={image.url} alt={title} className="thumbnail" />
-                        <div className="cartProductDetails">
-                            <div>
-                            {title}
+            <div className='cartContainer'>  
+                <h2 className="text-xl font-bold mb-4">Order Summary</h2>
+                <div className="grid grid-rows-2 gap-2">
+                    {cart.map(({id, title, quantity, price, image, discountedPrice}) => (
+                        <div key={id}>
+                        <div className="grid grid-rows-2">
+                            <img src={image.url} alt={title} className="size-36" />
+                            <div className="cartProductDetails flex flex-col justify-evenly">
+                                <div className="text-lg font-bold mb-4">
+                                    {title}
+                                </div>
+                                <div>
+                                    Price: ${discountedPrice ? discountedPrice : price}
+                                </div>
+                                <div>
+                                    Quantity: {quantity}
+                                </div>
+                                <div>
+                                    Total: ${Math.floor(discountedPrice ? discountedPrice * quantity : price * quantity)}
+                                </div>
                             </div>
-                            <div>
-                             Price: ${discountedPrice ? discountedPrice : price}
-                            </div>
-                            <div>
-                            Quantity: {quantity}
-                            </div>
-                            <div>
-                            Total: ${Math.floor(discountedPrice ? discountedPrice * quantity : price * quantity)}
-                            </div>
-                        </div>
                     
-                    </div> 
+                        </div> 
                        
-                </div>))}
+                    </div>))}
                 <div>
-                        <p>Cart total: ${getCartTotal().toFixed(2)}</p>
-                        </div>
+                    <p>Cart total: ${getCartTotal().toFixed(2)}</p>
+                </div>
             </div>  
             
+            </div>
         </div>
-
-
-    </div>
     
     </div>
   )

@@ -7,7 +7,7 @@ function Layout({ isOpen, toggleSidebar }) {
     <>
       <div className="flex ">
         <Header isOpen={isOpen} toggleSidebar={toggleSidebar} />
-        <div className={`flex-grow duration-300 ${isOpen ? "ml-76" : "ml-27"}`}>
+        <div className={`flex-grow ml-0 mt-10 sm:duration-300 ${isOpen ? "sm:ml-76" : "sm:ml-27"}`}>
           <Outlet />
         </div>
       </div>
