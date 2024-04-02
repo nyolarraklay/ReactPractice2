@@ -10,8 +10,11 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'tailwindcss'], 
   rules: {
+    'tailwindcss/classnames-order': 'warn',
+    'tailwindcss/no-custom-classname': 'error',
+    'tailwindcss/no-contradicting-classname': 'error',
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [
       'warn',

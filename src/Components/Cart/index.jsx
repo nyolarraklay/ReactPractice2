@@ -25,14 +25,14 @@ function Cart() {
   }
 
   return (
-    <div className="cartContainer">
+    <div>
       {cart.map(({ id, title, quantity, price, image, discountedPrice }) => (
         <div key={id}>
-          <div className="flex justify-between my-4">
+          <div className="grid grid-cols-2 my-2 gap-1">
             <img
               src={image.url}
               alt={title}
-              className="w-44 h-44 rounded-xl object-cover"
+              className="size-32 rounded-xl object-cover "
             />
             <div className="flex flex-col">
               <div>{title}</div>
@@ -43,7 +43,7 @@ function Cart() {
               >
                 Remove
               </button>
-              <div className="flex">
+              <div className="flex space-x-1">
                 <p className="me-2">QTY:</p>
                 <button
                   className="px-2 py-1 text-sm"
