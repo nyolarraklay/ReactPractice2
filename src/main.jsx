@@ -9,6 +9,7 @@ import Contacts from "./Components/Contacts";
 import Products from "./Components/Home/index.jsx";
 import ProductIndividual from "./Components/Product/index.jsx";
 import CheckOut from "./Components/Checkout";
+import CheckoutSuccess from "./Components/CheckoutSuccess/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,8 @@ const router = createBrowserRouter([
       { path: "/contacts", element: <Contacts /> },
       { path: "/product/:id", element: <ProductIndividual /> },
       { path: "/checkout", element: <CheckOut /> },
+      { path: "/checkoutsuccess", element: <CheckoutSuccess /> },
+      
     ],
   },
 ]);

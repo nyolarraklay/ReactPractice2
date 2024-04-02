@@ -2,6 +2,8 @@ import useProductStore from "../Store"
 import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
 
 const schema = yup.object({
     email: yup.string().email('Must be a valid email address').required('Email is required'),
@@ -19,9 +21,11 @@ function CheckOut() {
 const { register, handleSubmit, formState:{errors}, } = useForm({
     resolver: yupResolver(schema)
 });
+const history = useNavigate();
 
-function onSubmit(data) {
-    console.log(data);  
+function handleSubmitButton() {
+   history('/checkoutsuccess')
+
 }
 
   return (
@@ -32,7 +36,7 @@ function onSubmit(data) {
             <div className="checkout-container">
             <div>
                 <h2 className="text-xl font-bold mb-4">Contact Information</h2>
-                <form action="" className="space-y-4" onChange={handleSubmit(onSubmit)}>
+                <form action="" className="space-y-4">
                 <div className="form-group">
                     <label htmlFor="email"
                      className="block text-sm font-medium text-gray-700"
@@ -50,7 +54,8 @@ function onSubmit(data) {
                 <div>
                     <h2 className="text-xl font-bold mb-4">Shipping address</h2>
                 </div>
-                <form action="" className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+                
+                <form action="" className="space-y-4" onSubmit={handleSubmitButton}>
                 <div className="form-group">
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
                     <input type="text" name="name"  {...register('name')}/>
@@ -82,7 +87,7 @@ function onSubmit(data) {
                     <p className="form-errors">{errors.phone?.message}</p>
                 </div>
                 <button type="submit"  className="inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-           >Continue to Payment</button>
+           >Continue to CheckOut</button>
                 </form>
             </div>
             </div>
