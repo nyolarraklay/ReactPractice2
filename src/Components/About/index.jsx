@@ -2,10 +2,13 @@ import { Link } from 'react-router-dom';
 
 function About() {
   return (
-    <div>
-        <h1>About</h1>
-        <p>This is the about page</p>
-        <Link to="/">Go back to the homepage</Link>
+    <div className="max-w-md mx-auto mt-8 space-y-10 p-10">
+          <h1 className="text-2xl font-bold mb-4">About Us</h1>
+          <p className="text-lg">
+           Course Assignment  for Noroff JS frameworks module. 
+           To apply the knowledge of React to build an eCommerse site.
+          </p>
+           <button>  <Link to="/" className="text-white hover:text-yellow-200">Go back to the homepage</Link></button>
     </div>
   )
 }

@@ -5,7 +5,6 @@ import { create } from 'zustand';
 const useProductStore = create((set, get) => ({
     products: [],
     cart: [],
-    cartTotal: 0,
     isLoading: false,
     isError: false,
     seeMore: true,

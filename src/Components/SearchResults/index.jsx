@@ -6,7 +6,9 @@ const SearchResultsList = ({ results, clearInput }) => {
   };
   return (
     <div className="search-results-container bg-white text-black">
-      {results.map((result) => (
+
+    {results && 
+      results.map((result) => (
         <Link
           to={`/product/${result.id}`}
           onClick={handleItemClick}

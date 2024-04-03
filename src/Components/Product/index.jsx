@@ -46,7 +46,7 @@ function ProductIndividual() {
     return <p>Something went wrong</p>;
   } else {
     return (
-      <div className="cardContainerForProduct">
+      <div className="mt-4 max-w-md mx-auto p-8 min-h-screen  flex justify-center items-center">
         <Product
           product={data}
           key={data.id}

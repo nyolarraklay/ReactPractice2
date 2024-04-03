@@ -52,12 +52,15 @@ function Nav({ isOpen, toggleSidebar }) {
       } sm:duration-300`}
     >
       <nav id="navbar" className="flex justify-between sm:items-center sm:flex-col">
-        <FaArrowCircleLeft
-          className={`hidden sm:block absolute -right-9 top-9 text-3xl cursor-pointer ${
+        <div className="bg-black h-7 w-7 hidden sm:block absolute -right-9 top-9 rounded-full cursor-pointer">
+          <FaArrowCircleLeft
+          className={`hidden sm:block  text-3xl cursor-pointer ${
             !isOpen && "rotate-180"
           }`}
           onClick={toggleSidebar}
         />
+        </div>
+        
         <div className={`m-0 flex items-center  gap-1 ${
             !isOpen ? "px-0 w-8" : "px-4"
           } sm:py-2`}>

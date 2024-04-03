@@ -17,20 +17,22 @@ const schema = yup.object({
 
 
 function CheckOut() {
-        const { cart, getCartTotal } = useProductStore();
+        const { cart, getCartTotal, clearCart } = useProductStore();
 const { register, handleSubmit, formState:{errors}, } = useForm({
     resolver: yupResolver(schema)
 });
 const history = useNavigate();
 
-function handleSubmitButton() {
+function handleSubmitButton(data) {
+    clearCart();
    history('/checkoutsuccess')
-
+console.log(data);
 }
 
   return (
     <div className="p-8">
-        <h1 className="text-3xl font-bold mb-4">Checkout</h1>
+        <h1 className="text-3xl font-bold mb-4">Your Almost There!!</h1>
+        <p className="text-gray-600 mb-6">Please fill in your contact information and shipping address to complete your order.</p>
       
         <div className="grid max-w-lg mx-auto md:grid-cols-2 sm:grid-cols-1 gap-3" >
             <div className="checkout-container">
@@ -55,7 +57,7 @@ function handleSubmitButton() {
                     <h2 className="text-xl font-bold mb-4">Shipping address</h2>
                 </div>
                 
-                <form action="" className="space-y-4" onSubmit={handleSubmitButton}>
+                <form action="" className="space-y-4" onSubmit={handleSubmit(handleSubmitButton)}>
                 <div className="form-group">
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
                     <input type="text" name="name"  {...register('name')}/>

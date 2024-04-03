@@ -31,7 +31,7 @@ function Products({ isOpen }) {
     return (
       <div className="block">
           <Search />
-          <div className="px-8 py-1 sm:mt-0 sm:p-4 grid justify-items-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-6 gap-3 ">
+          <div className="cardContainer">
      
         {products.map((product) => (
           <Product
