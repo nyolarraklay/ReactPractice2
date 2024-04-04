@@ -9,7 +9,7 @@ function ModalCart() {
       {showModal && (
         <div>
           <div className="overlay"></div>
-          <div className="modal">
+          <div className='modal'>
             <div className="modalContent flex flex-col justify-between gap-5">
               <div>
                 <button

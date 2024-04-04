@@ -5,8 +5,10 @@ const SearchResultsList = ({ results, clearInput }) => {
     clearInput(); // Clear input when item is clicked
   };
   return (
-    <div className="search-results-container mt-5">
-      {results.map((result) => (
+    <div className="search-results-container bg-white text-black">
+
+    {results && 
+      results.map((result) => (
         <Link
           to={`/product/${result.id}`}
           onClick={handleItemClick}

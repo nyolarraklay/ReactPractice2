@@ -21,13 +21,13 @@ const discount = Math.floor((price - discountedPrice) / price * 100);
     <div className="cardContent">
     <div className='linkToRedirect'>
         
-   {seeMore ? <Link to={`/product/${id}`}>See More</Link> : <Link to={`/`}>Bact to products</Link>}
+   {seeMore ? <Link to={`/product/${id}`}className="text-green-400">See More</Link> : <Link to={`/`} className="text-green-400">Bact to products</Link>}
        </div>
   
-    <h3>TITLE: {title}</h3>
+    <h3 className='font-bold text-lg'>TITLE: {title}</h3>
     <p>Description: {description}</p>
     <Paragraph isDiscounted={discount}>Price: {price} kr</Paragraph>
-    {discount > 0 && <div><p>NOW! {discountedPrice}</p> <p>On Sale: {discount}% Off</p></div>}
+    {discount > 0 && <div className='text-xl text-yellow-400 font-extrabold'><p>NOW! {discountedPrice}</p> <p className='font-semibold text-lg text-rose-400'>On Sale: {discount}% Off</p></div>}
     
     <button onClick={handleButtonClick}>Add to cart</button>
     {addedToCart && <p>Added to Cart</p>}   
