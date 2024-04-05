@@ -1,5 +1,6 @@
 import useProductStore from "../Store";
 import { Link } from "react-router-dom";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 function Cart() {
   const {
@@ -34,18 +35,13 @@ function Cart() {
               alt={title}
               className="size-32 rounded-xl object-cover "
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col justify-center">
               <div>{title}</div>
               <div>Price: ${discountedPrice ? discountedPrice : price}</div>
-              <button
-                className="py-1 text-sm mb-2 "
-                onClick={() => handleDeleteItem(id)}
-              >
-                Remove
-              </button>
-              <div className="flex space-x-1">
+              <div className="flex justify-evenly items-center">
                 <p className="me-2">QTY:</p>
-                <button
+                <div className="flex space-x-1">
+                    <button
                   className="px-2 py-1 text-sm"
                   onClick={() => handleDeleteQuantity(id)}
                 >
@@ -58,7 +54,12 @@ function Cart() {
                 >
                   +
                 </button>
+                </div>
+              
+                <FaRegTrashAlt className="text-xl cursor-pointer hover:text-red-500 "
+                onClick={() => handleDeleteItem(id)} />
               </div>
+              <div>SubTotal: ${discountedPrice ? discountedPrice * quantity : price * quantity}</div>
             </div>
           </div>
         </div>
