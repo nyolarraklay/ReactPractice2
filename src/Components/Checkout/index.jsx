@@ -112,7 +112,7 @@ console.log(data);
                                     Quantity: {quantity}
                                 </div>
                                 <div>
-                                    Total: ${Math.floor(discountedPrice ? discountedPrice * quantity : price * quantity)}
+                                    Total: ${Math.floor(discountedPrice ? discountedPrice * quantity : price * quantity).toLocaleString()}
                                 </div>
                             </div>
                     
@@ -120,7 +120,7 @@ console.log(data);
                        
                     </div>))}
                 <div>
-                    <p>Cart total: ${getCartTotal().toFixed(2)}</p>
+                    <p className="text-xl font-bold">Cart total: ${getCartTotal().toLocaleString()}</p>
                 </div>
             </div>  
             

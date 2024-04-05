@@ -25,6 +25,8 @@ function Cart() {
     removedFromCart(id);
   }
 
+
+
   return (
     <div>
       {cart.map(({ id, title, quantity, price, image, discountedPrice }) => (
@@ -59,7 +61,7 @@ function Cart() {
                 <FaRegTrashAlt className="text-xl cursor-pointer hover:text-red-500 "
                 onClick={() => handleDeleteItem(id)} />
               </div>
-              <div>SubTotal: ${discountedPrice ? discountedPrice * quantity : price * quantity}</div>
+              <div>SubTotal: ${discountedPrice ? Math.floor(discountedPrice * quantity).toLocaleString() : price * quantity}</div>
             </div>
           </div>
         </div>
@@ -70,7 +72,7 @@ function Cart() {
       ) : (
         <div>
           <p className="text-right font-bold my-4">
-            Cart total: ${getCartTotal().toFixed(2)}
+            Cart total: ${getCartTotal().toLocaleString()}
           </p>{" "}
           <div className="flex flex-col justify-center items-center">
             <div className="flex">
