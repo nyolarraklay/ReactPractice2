@@ -61,7 +61,7 @@ function Nav({ isOpen, toggleSidebar }) {
         />
         </div>
         
-        <div className={`m-0 flex items-center  gap-1 ${
+        <NavLink to="/" className={`m-0 flex items-center  gap-1 ${
             !isOpen ? "px-0 w-8" : "px-4"
           } sm:py-2`}>
           <FcShop className="text-3xl" />
@@ -72,7 +72,7 @@ function Nav({ isOpen, toggleSidebar }) {
           >
             Noroff Shop
           </h1>
-        </div>
+        </NavLink>
         <div
           className={`hidden sm:flex gap-4 items-center my-4 rounded-md bg-zinc-700 sm:mt-6 ${
             !isOpen ? "px-2 w-8" : "px-4"
