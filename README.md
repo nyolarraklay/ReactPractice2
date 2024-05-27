@@ -1,6 +1,6 @@
 ![E-commerce Site Banner](public/screenshot1.png)
 
-# Noroff Shop (My E-coomerce site)
+# Noroff Shop (My E-commerce site)
 [noroffonlineshop](https://noroffonlineshop.netlify.app/)
 
 Welcome to our Noroff online shop! This README will guide you through the setup and provide an overview of the project structure and features.
