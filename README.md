@@ -1,3 +1,5 @@
+![E-commerce Site Banner](public/screenshot1.png)
+
 # Noroff Shop (My E-coomerce site)
 [noroffonlineshop](https://noroffonlineshop.netlify.app/)
 
@@ -59,6 +61,14 @@ To run the project locally, follow these steps:
   - Vite: Build tool that provides fast development server and optimized builds.
   - Tailwind CSS: Utility-first CSS framework for rapidly building custom designs.
   - HTML, CSS: Standard web technologies for markup and styling.
+
+## Media:
+#### Mobile View
+![E-commerce Site Banner](public/screenshot2.png)
+
+#### Desktop View
+![E-commerce Site Banner](public/screenshot1.png)
+
   
 
 ## Contributing:
@@ -67,4 +77,4 @@ We welcome contributions from the community! If you find any bugs or have sugges
 ## Contact:
 For any inquiries or support, feel free to contact me.
 
-Thank you for using our Online Booking Site! We hope you find it useful and convenient for managing your appointments.
+Thank you for using our Noroff Online Site! We hope you find it useful and convenient for managing your appointments.
