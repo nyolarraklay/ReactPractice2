@@ -29,9 +29,9 @@ function Products({ isOpen }) {
     return <p>Something went wrong</p>;
   } else {
     return (
-      <div className="block">
+      <div className="block my-20 sm:my-1">
           <Search />
-          <div className="cardContainer">
+          <div className="cardContainer mt-5 sm:mt-0">
      
         {products.map((product) => (
           <Product
